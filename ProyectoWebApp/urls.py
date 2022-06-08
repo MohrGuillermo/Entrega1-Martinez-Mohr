@@ -1,9 +1,13 @@
 from django.urls import path
-from ProyectoWebApp.views import inicio, servicios, blog, nosotros, ingreso
+
+from ProyectoWebApp.views import comprasForm, inicio, verPaquetes, nosotros, verComentarios, formComentarios, formPaquetes
 urlpatterns = [
     path('', inicio, name='Inicio'),
-    path('Servicios/', servicios, name='Servicios'),
-    path('Comentarios/', blog, name='Comentarios'),
+    path('Paquetes/', verPaquetes, name='Paquetes'),
+    path('Blog/', verComentarios, name='Blog'),
     path('Nosotros/', nosotros, name='Nosotros'),
-    path('Ingreso/', ingreso, name='Ingreso'),
+    path('NuevoComentario/', formComentarios , name='NuevoComentario'),
+    path('NuevoPaquete/', formPaquetes , name='NuevoPaquete'),
+    path('NuevaCompra/', comprasForm , name='NuevaCompra'),
+    
 ]

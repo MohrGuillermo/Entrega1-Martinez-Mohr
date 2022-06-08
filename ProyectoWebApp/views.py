@@ -1,20 +1,36 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 
+
+
+from django.shortcuts import render
+from ProyectoWebApp.models import Comentario, Paquete, Compra
+from ProyectoWebApp.forms import ComentarioForm, CompraForm, PaqueteForm
+ 
 # Create your views here.
 def inicio(request):
 
     return render(request, 'ProyectoWebApp/inicio.html')
 
 
-def servicios(request):
+def verPaquetes(request):
+    paquetes = Paquete.objects.all()
+    contexto = {'paquetes':paquetes}    
+    return render(request, 'verPaquetes.html', contexto)
+    
 
-    return render(request, 'ProyectoWebApp/servicios.html')
+def formPaquetes(request):
+    if request.method == 'POST':
+        miFormulario = PaqueteForm(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+            paquetes = Paquete(nombre = informacion['nombre'], destino = informacion['destino'], hotel = informacion['hotel'])
+            paquetes.save()
+            return render(request, 'ProyectoWebApp/formCompras.html')
+    else:
+        miFormulario = PaqueteForm()
+    return render(request, 'formPaquetes.html', {'miFormulario' : miFormulario})
 
 
-def blog(request):
-
-    return render(request, 'ProyectoWebApp/blog.html')
 
 
 def nosotros(request):
@@ -22,6 +38,39 @@ def nosotros(request):
     return render(request, 'ProyectoWebApp/nosotros.html')
 
 
-def ingreso(request):
+def comprasForm(request):
+    if request.method == 'POST':
+        miFormulario = CompraForm(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+            compras = Compra(nombre = informacion['nombre'], apellido = informacion['apellido'], email = informacion['email'], banco = informacion['banco'], paquete = informacion['paquete'], nrotarjeta = informacion['nrotarjeta'])
+            compras.save()
+            return render(request, 'ProyectoWebApp/gracias.html')
+    else:
+        miFormulario = CompraForm()
+    return render(request, 'formCompras.html', {'miFormulario' : miFormulario})
 
-    return render(request, 'ProyectoWebApp/ingreso.html')
+
+
+
+def verComentarios(request):
+    comentarios = Comentario.objects.all()
+    contexto = {'comentarios':comentarios}    
+    return render(request, 'blog.html', contexto)
+
+
+def formComentarios(request):
+
+    if request.method == 'POST':
+        miFormulario = ComentarioForm(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+            comentario = Comentario(nombre = informacion['nombre'], apellido = informacion['apellido'], texto = informacion['texto'])
+            comentario.save()
+            return render(request, 'ProyectoWebApp/inicio.html')
+    else:
+        miFormulario = ComentarioForm()
+    return render(request, 'formComentarios.html', {'miFormulario' : miFormulario})
+

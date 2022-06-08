@@ -1,0 +1,35 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block title %}
+        <title>MH Turismo - NuevoComentario</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'ProyectoWebApp/assets/favicon.ico' %}" />
+{% endblock %}
+{% block body %}
+        <!-- Masthead-->
+        <header class="masthead">
+                <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="text-center">
+                            <h1 class="mx-auto my-0 ">M&H Turismo</h1>
+                            <h3 class="text-white-50 mx-auto mt-5 mb-5">Tu agencia de confianza</h3>
+                            <a class="btn btn-primary" href="../NuevoPaquete/">¿Que esperas? Tu nueva experiencia M&H está a un click</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+<center>
+        <form action="" method="POST">{% csrf_token %}
+            
+            <table>
+            
+                {{miFormulario.as_table}}
+            
+            </table>
+            
+            
+            <input type="submit" value="Enviar formulario API">
+        </form>
+</center>
+
+{% endblock %}

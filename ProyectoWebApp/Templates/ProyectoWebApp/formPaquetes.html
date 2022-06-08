@@ -1,7 +1,7 @@
 {% extends "padre.html" %}
 {% load static %}
 {% block title %}
-        <title>MH Turismo - Blog</title>
+        <title>MH Turismo - NuevoPaquete</title>
         <link rel="icon" type="image/x-icon" href="{% static 'ProyectoWebApp/assets/favicon.ico' %}" />
 {% endblock %}
 {% block body %}
@@ -19,12 +19,17 @@
             </div>
         </header>
 <center>
-    <ul>
-    {% for i in comentarios %}
-        <li>{{i}}</li><br><br>
-    {% endfor %}
-    </ul>
-
-    <a href="../NuevoComentario/"><h1>Nuevo Comentario</h1></a>
+        <form action="" method="POST">{% csrf_token %}
+            
+            <table>
+            
+                {{miFormulario.as_table}}
+            
+            </table>
+            
+            <a href="../NuevaCompra/"><h1>Nueva Compra</h1></a>
+            <!-- <input type="submit" value="Comprar" > -->
+        </form>
 </center>
+
 {% endblock %}
