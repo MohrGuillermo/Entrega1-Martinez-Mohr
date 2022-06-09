@@ -13,24 +13,18 @@
                         <h1 class="mx-auto my-0 ">M&H Turismo</h1>
                         <h3 class="text-white-50 mx-auto mt-5 mb-5">Tu agencia de confianza</h3>
                         <a class="btn btn-primary" href="{% url 'Paquetes' %}">Ver paquetes</a>
+                        <form action="{% url 'Buscar' %}" method="GET">{% csrf_token %}
+                            <table>
+                                <input type="text" placeholder="Nombre" id="nombre" name="nombre">
+                            </table>
+                                <button>
+                                    <input type="submit" value="Buscar">
+                                </button>
+                        </form>
                         
                     </div>
                 </div>
             </div>
         </header>
 <center>
-        <form action="{% url 'NuevoPaquete' %}" method="POST">{% csrf_token %}
-            
-            <table>
-            
-                {{miFormulario.as_table}}
-                
-            </table>
-            <button type="submit">Enviar paquete</button>
-            
-           
-            <!-- <input type="submit" value="Comprar" > -->
-        </form>
-</center>
-
-{% endblock %}
+    {% endblock %}

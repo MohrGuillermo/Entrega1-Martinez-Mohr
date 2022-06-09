@@ -2,6 +2,7 @@
 
 
 from django.shortcuts import render
+from django.http import HttpResponse
 from ProyectoWebApp.models import Comentario, Paquete, Compra
 from ProyectoWebApp.forms import ComentarioForm, CompraForm, PaqueteForm
  
@@ -73,4 +74,18 @@ def formComentarios(request):
     else:
         miFormulario = ComentarioForm()
     return render(request, 'formComentarios.html', {'miFormulario' : miFormulario})
+
+
+def buscarCompra(request):
+    return render(request, 'busquedaCompras.html')
+
+def buscar(request):
+    if request.GET['nombre']:
+        nombre = request.GET['nombre']
+        compras = Compra.objects.filter(nombre = nombre)
+
+        return render(request, 'resultadosBusqueda.html', {'compras': compras , "nombre":nombre })
+    else:
+        respuesta = 'No enviaste datos'
+        return  HttpResponse(respuesta)
 

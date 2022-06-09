@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/mohrg/Desktop/Trabajos Django/Entrega1Martinez-Mohr/ProyectoWeb/ProyectoWebApp/Templates/ProyectoWebApp'],
+        'DIRS': ['G:/My Drive/ESTUDIOS/Python/Programas/Visual Python/ProyectoCoder/Entrega1-Martinez-Mohr/ProyectoWebApp/Templates/ProyectoWebApp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
