@@ -11,8 +11,9 @@
                     <div class="d-flex justify-content-center">
                         <div class="text-center">
                             <h1 class="mx-auto my-0 ">M&H Turismo</h1>
+                            <h2 class = "mx-auto my-0 " style="font-size: 60px">Paquetes</h2>
                             <h3 class="text-white-50 mx-auto mt-5 mb-5">Tu agencia de confianza</h3>
-                            <a class="btn btn-primary" href="../NuevoPaquete/">¿Que esperas? Tu nueva experiencia M&H está a un click</a>
+                            <a class="btn btn-primary" href="{% url 'NuevaCompra' %}">Comprar Paquete</a>
                             
                         </div>
                     </div>
@@ -27,6 +28,6 @@
     {% endfor %}
     </ul>
 
-    <a href="../NuevoPaquete/"><h1>¡Arma el tuyo!</h1></a>
+    <a href="{% url 'NuevoPaquete' %}"><h1>¡Arma el tuyo!</h1></a>
 </center>
 {% endblock %}
